@@ -1,0 +1,50 @@
+---
+openapi: 3.0.1
+info:
+  title: API V1
+  version: v1
+paths:
+  "/widgets":
+    get:
+      summary: list widgets
+      responses:
+        '200':
+          description: successful
+    post:
+      summary: create widget
+      responses:
+        '200':
+          description: successful
+  "/widgets/{id}":
+    parameters:
+    - name: id
+      in: path
+      description: id
+      required: true
+      schema:
+        type: string
+    get:
+      summary: show widget
+      responses:
+        '200':
+          description: successful
+    patch:
+      summary: update widget
+      responses:
+        '200':
+          description: successful
+    put:
+      summary: update widget
+      responses:
+        '200':
+          description: successful
+    delete:
+      summary: delete widget
+      responses:
+        '200':
+          description: successful
+servers:
+- url: https://{defaultHost}
+  variables:
+    defaultHost:
+      default: www.example.com
