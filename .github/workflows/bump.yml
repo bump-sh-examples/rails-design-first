@@ -18,12 +18,17 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+      
+      - name: Generate OpenAPI
+        run: bundle exec rake rswag
+
       - name: Deploy API documentation
         uses: bump-sh/github-action@v1
         with:
           doc: rails-hello-openapi
           token: ${{secrets.BUMP_TOKEN}}
-          file: doc/api-documentation.yml
+          file: swagger/v1/swagger.yml
+
   api-diff:
     if: ${{ github.event_name == 'pull_request' }}
     name: Check API diff on Bump.sh
@@ -31,12 +36,16 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+
+      - name: Generate OpenAPI
+        run: bundle exec rake rswag
+
       - name: Comment pull request with API diff
         uses: bump-sh/github-action@v1
         with:
           doc: rails-hello-openapi
           token: ${{secrets.BUMP_TOKEN}}
-          file: doc/api-documentation.yml
+          file: swagger/v1/swagger.yml
           command: diff
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
