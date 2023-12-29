@@ -17,7 +17,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
+      
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+      
+      - name: Install dependencies
+        run: bundle install
       
       - name: Generate OpenAPI
         run: bundle exec rake rswag
@@ -27,7 +33,7 @@ jobs:
         with:
           doc: rails-hello-openapi
           token: ${{secrets.BUMP_TOKEN}}
-          file: swagger/v1/swagger.yml
+          file: swagger/v1/swagger.yaml
 
   api-diff:
     if: ${{ github.event_name == 'pull_request' }}
@@ -35,7 +41,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
+      
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+      
+      - name: Install dependencies
+        run: bundle install
 
       - name: Generate OpenAPI
         run: bundle exec rake rswag
@@ -45,7 +57,7 @@ jobs:
         with:
           doc: rails-hello-openapi
           token: ${{secrets.BUMP_TOKEN}}
-          file: swagger/v1/swagger.yml
+          file: swagger/v1/swagger.yaml
           command: diff
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
