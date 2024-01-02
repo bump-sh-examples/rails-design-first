@@ -5,12 +5,16 @@ class WidgetsController < ApplicationController
   def index
     @widgets = Widget.all
 
-    render json: @widgets
+    if stale?(@posts)
+      render json: @widgets
+    end
   end
 
   # GET /widgets/1
   def show
-    render json: @widget
+    if stale?(@posts)
+      render json: @widget
+    end
   end
 
   # POST /widgets

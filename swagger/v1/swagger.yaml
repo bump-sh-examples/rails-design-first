@@ -7,19 +7,87 @@ paths:
   "/widgets":
     get:
       summary: list widgets
+      parameters: []
       responses:
         '200':
           description: successful
+          headers:
+            Cache-Control:
+              schema:
+                type: string
+              description: This header declares the cacheability of the content so
+                you can skip repeating requests.
+          content:
+            application/json:
+              examples:
+                example_key:
+                  value:
+                  - id: 1
+                    title: Goblin Staff of Sparks
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          format: uuid
+                          example: 123e4567-e89b-12d3-a456-426614174000
+                        title:
+                          type: string
+                          example: Goblin Staff of Sparks
+                        created_at:
+                          type: string
+                          format: date-time
+                        updated_at:
+                          type: string
+                          format: date-time
+        '429':
+          description: too many requests
+          headers:
+            X-Rate-Limit-Limit:
+              schema:
+                type: integer
+              description: The number of allowed requests in the current period
+            X-Rate-Limit-Remaining:
+              schema:
+                type: integer
+              description: The number of remaining requests in the current period
+            X-Rate-Limit-Reset:
+              schema:
+                type: integer
+              description: The number of seconds left in the current period
     post:
       summary: create widget
       responses:
         '200':
           description: successful
+        '422':
+          description: unprocessable entity
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        title:
+                          type: string
+                        detail:
+                          type: string
+                        code:
+                          type: string
   "/widgets/{id}":
     parameters:
     - name: id
       in: path
-      description: id
+      description: The unique identifier of a widget.
       required: true
       schema:
         type: string
@@ -28,18 +96,8 @@ paths:
       responses:
         '200':
           description: successful
-    patch:
-      summary: update widget
-      responses:
-        '200':
-          description: successful
     put:
       summary: update widget
-      responses:
-        '200':
-          description: successful
-    delete:
-      summary: delete widget
       responses:
         '200':
           description: successful
