@@ -1,12 +1,23 @@
 ---
-openapi: 3.0.1
+openapi: 3.0.3
 info:
-  title: API V1
-  version: v1
+  title: Widget API
+  description: |
+    This is a sample server for a widget API, built with Rails and the Committee 
+    gem for working with OpenAPI.
+  version: "1.0.0"
+
+servers:
+- description: 'Production'
+  url: 'https://example.com'
+
 paths:
   "/widgets":
     get:
-      summary: list widgets
+      summary: List widgets
+      description: |
+        This endpoint returns a list of widgets.
+      operationId: list-widgets
       parameters: []
       responses:
         '200':
@@ -101,8 +112,3 @@ paths:
       responses:
         '200':
           description: successful
-servers:
-- url: https://{defaultHost}
-  variables:
-    defaultHost:
-      default: www.example.com

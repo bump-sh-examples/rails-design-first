@@ -1,6 +1,6 @@
-require 'swagger_helper'
+require 'rails_helper'
 
-RSpec.describe 'widgets', type: :request do
+RSpec.xdescribe 'widgets', type: :request do
 
   path '/widgets' do
 

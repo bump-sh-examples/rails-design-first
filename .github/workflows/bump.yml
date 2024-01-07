@@ -33,7 +33,7 @@ jobs:
         with:
           doc: rails-hello-openapi
           token: ${{secrets.BUMP_TOKEN}}
-          file: swagger/v1/swagger.yaml
+          file: api/openapi.yaml
 
   api-diff:
     if: ${{ github.event_name == 'pull_request' }}
@@ -57,7 +57,7 @@ jobs:
         with:
           doc: rails-hello-openapi
           token: ${{secrets.BUMP_TOKEN}}
-          file: swagger/v1/swagger.yaml
+          file: api/openapi.yaml
           command: diff
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
