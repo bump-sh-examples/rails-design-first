@@ -1,3 +1,12 @@
+GIT
+  remote: git@github.com:philsturgeon/openapi_contracts.git
+  revision: eb30b4ddaf2ea9563909de80513bdae3c2c53adf
+  specs:
+    openapi_contracts (0.7.0)
+      activesupport (>= 6.1, < 8)
+      json_schemer (>= 2, < 2.2)
+      rack (>= 2.0.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -155,14 +164,14 @@ GEM
     puma (6.4.1)
       nio4r (~> 2.0)
     racc (1.7.3)
-    rack (3.0.8)
-    rack-session (2.0.0)
-      rack (>= 3.0.0)
+    rack (2.2.8)
+    rack-session (1.0.2)
+      rack (< 3)
     rack-test (2.1.0)
       rack (>= 1.3)
-    rackup (2.1.0)
-      rack (>= 3)
-      webrick (~> 1.8)
+    rackup (1.0.0)
+      rack (< 3)
+      webrick
     rails (7.1.2)
       actioncable (= 7.1.2)
       actionmailbox (= 7.1.2)
@@ -238,6 +247,7 @@ PLATFORMS
 
 DEPENDENCIES
   bootsnap
+  openapi_contracts!
   openapi_first (~> 1.0)
   pry (~> 0.14.2)
   puma (>= 5.0)
