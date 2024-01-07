@@ -18,15 +18,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      
-      - name: Set up Ruby
-        uses: ruby/setup-ruby@v1
-      
-      - name: Install dependencies
-        run: bundle install
-      
-      - name: Generate OpenAPI
-        run: bundle exec rake rswag
 
       - name: Deploy API documentation
         uses: bump-sh/github-action@v1
@@ -43,15 +34,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       
-      - name: Set up Ruby
-        uses: ruby/setup-ruby@v1
-      
-      - name: Install dependencies
-        run: bundle install
-
-      - name: Generate OpenAPI
-        run: bundle exec rake rswag
-
       - name: Comment pull request with API diff
         uses: bump-sh/github-action@v1
         with:

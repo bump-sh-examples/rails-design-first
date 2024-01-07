@@ -10,6 +10,6 @@ servers:
     url: https://example.com
 paths:
   /widgets:
-    $ref: paths/widgets.yaml
+    $ref: "./paths/widgets.yaml"
   /widgets/{id}:
-    $ref: paths/widgets_{id}.yaml
+    $ref: "./paths/widgets_id.yaml"

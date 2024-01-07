@@ -19,7 +19,7 @@ get:
           schema:
             type: array
             items:
-              $ref: components/schema/widget.yaml
+              $ref: "../components/schema/widget.yaml"
 
     '429':
       description: too many requests
@@ -45,7 +45,7 @@ post:
     content:
       application/json:
         schema:
-          $ref: components/schema/widget.yaml
+          $ref: "../components/schema/widget.yaml"
   responses:
     '201':
       description: Created

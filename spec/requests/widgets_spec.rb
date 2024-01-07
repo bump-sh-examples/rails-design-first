@@ -1,6 +1,4 @@
-require 'rails_helper'
-
-RSpec.xdescribe 'widgets', type: :request do
+RSpec.describe 'widgets', type: :request do
 
   path '/widgets' do
 
