@@ -1,0 +1,22 @@
+type: object
+description: >-
+  This is a widget. It has a title and a description. It can be used to
+  demonstrate the use of components.
+properties:
+  id:
+    type: string
+    format: uuid
+    example: 123e4567-e89b-12d3-a456-426614174000
+    readOnly: true
+  title:
+    type: string
+    example: Goblin Staff of Sparks
+    writeOnly: true
+  created_at:
+    type: string
+    format: date-time
+    readOnly: true
+  updated_at:
+    type: string
+    format: date-time
+    readOnly: true

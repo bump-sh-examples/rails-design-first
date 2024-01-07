@@ -1,0 +1,17 @@
+parameters:
+  - name: id
+    in: path
+    description: The unique identifier of a widget.
+    required: true
+    schema:
+      type: string
+get:
+  summary: show widget
+  responses:
+    '200':
+      description: successful
+put:
+  summary: update widget
+  responses:
+    '200':
+      description: successful

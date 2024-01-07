@@ -1,0 +1,69 @@
+get:
+  summary: List widgets
+  description: |
+    This endpoint returns a list of widgets.
+  operationId: list-widgets
+  parameters: []
+  responses:
+    '200':
+      description: successful
+      headers:
+        Cache-Control:
+          schema:
+            type: string
+          description: >-
+            This header declares the cacheability of the content so you can skip
+            repeating requests.
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: components/schema/widget.yaml
+
+    '429':
+      description: too many requests
+      headers:
+        X-Rate-Limit-Limit:
+          schema:
+            type: integer
+          description: The number of allowed requests in the current period
+        X-Rate-Limit-Remaining:
+          schema:
+            type: integer
+          description: The number of remaining requests in the current period
+        X-Rate-Limit-Reset:
+          schema:
+            type: integer
+          description: The number of seconds left in the current period
+post:
+  summary: Create Widget
+  operationId: create-widget
+  requestBody:
+    description: Widget to create
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: components/schema/widget.yaml
+  responses:
+    '201':
+      description: Created
+    '422':
+      description: Unprocessable Entity
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              errors:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    title:
+                      type: string
+                    detail:
+                      type: string
+                    code:
+                      type: string
