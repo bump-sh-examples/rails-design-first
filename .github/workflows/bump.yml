@@ -22,7 +22,7 @@ jobs:
       - name: Deploy API documentation
         uses: bump-sh/github-action@v1
         with:
-          doc: rails-hello-openapi
+          doc: rails-design-first
           token: ${{secrets.BUMP_TOKEN}}
           file: api/openapi.yaml
 
@@ -37,7 +37,7 @@ jobs:
       - name: Comment pull request with API diff
         uses: bump-sh/github-action@v1
         with:
-          doc: rails-hello-openapi
+          doc: rails-design-first
           token: ${{secrets.BUMP_TOKEN}}
           file: api/openapi.yaml
           command: diff

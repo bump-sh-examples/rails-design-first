@@ -49,10 +49,10 @@ post:
   responses:
     '201':
       description: Created
-    '422':
-      description: Unprocessable Entity
+    '400':
+      description: Bad Request
       content:
-        application/json:
+        application/problem+json:
           schema:
             type: object
             properties:
