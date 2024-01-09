@@ -7,7 +7,7 @@ gem "sqlite3", "~> 1.4"
 gem "puma", ">= 5.0"
 
 gem 'openapi_first', '~> 1.0'
-gem 'openapi_contracts', git: "git@github.com:mkon/openapi_contracts.git"
+gem 'openapi_contracts'
 
 group :test do
   gem 'rspec-rails', '~> 6.1.0'
