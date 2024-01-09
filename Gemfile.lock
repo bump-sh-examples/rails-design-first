@@ -1,6 +1,6 @@
 GIT
-  remote: git@github.com:philsturgeon/openapi_contracts.git
-  revision: eb30b4ddaf2ea9563909de80513bdae3c2c53adf
+  remote: git@github.com:mkon/openapi_contracts.git
+  revision: a43bdda7169104786f9f97e484cb4767f9ab4c76
   specs:
     openapi_contracts (0.7.0)
       activesupport (>= 6.1, < 8)
@@ -89,7 +89,6 @@ GEM
     bootsnap (1.17.0)
       msgpack (~> 1.2)
     builder (3.2.4)
-    coderay (1.1.3)
     concurrent-ruby (1.2.2)
     connection_pool (2.4.1)
     crass (1.0.6)
@@ -123,7 +122,6 @@ GEM
       net-pop
       net-smtp
     marcel (1.0.2)
-    method_source (1.0.0)
     mini_mime (1.1.5)
     minitest (5.20.0)
     msgpack (1.7.2)
@@ -158,22 +156,19 @@ GEM
     openapi_parameters (0.3.2)
       rack (>= 2.2)
       zeitwerk (~> 2.6)
-    pry (0.14.2)
-      coderay (~> 1.1)
-      method_source (~> 1.0)
     psych (5.1.2)
       stringio
-    puma (6.4.1)
+    puma (6.4.2)
       nio4r (~> 2.0)
     racc (1.7.3)
-    rack (2.2.8)
-    rack-session (1.0.2)
-      rack (< 3)
+    rack (3.0.8)
+    rack-session (2.0.0)
+      rack (>= 3.0.0)
     rack-test (2.1.0)
       rack (>= 1.3)
-    rackup (1.0.0)
-      rack (< 3)
-      webrick
+    rackup (2.1.0)
+      rack (>= 3)
+      webrick (~> 1.8)
     rails (7.1.2)
       actioncable (= 7.1.2)
       actionmailbox (= 7.1.2)
@@ -206,7 +201,7 @@ GEM
     rake (13.1.0)
     rdoc (6.6.2)
       psych (>= 4.0.0)
-    regexp_parser (2.8.3)
+    regexp_parser (2.9.0)
     reline (0.4.2)
       io-console (~> 0.5)
     rspec-core (3.12.2)
@@ -217,7 +212,7 @@ GEM
     rspec-mocks (3.12.6)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.12.0)
-    rspec-rails (6.0.4)
+    rspec-rails (6.1.0)
       actionpack (>= 6.1)
       activesupport (>= 6.1)
       railties (>= 6.1)
@@ -253,10 +248,9 @@ DEPENDENCIES
   bootsnap
   openapi_contracts!
   openapi_first (~> 1.0)
-  pry (~> 0.14.2)
   puma (>= 5.0)
   rails (~> 7.1.2)
-  rspec-rails (~> 6.0.0)
+  rspec-rails (~> 6.1.0)
   sqlite3 (~> 1.4)
   tzinfo-data
 
