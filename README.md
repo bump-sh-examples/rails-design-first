@@ -37,5 +37,5 @@ Preview how the API reference docs look [on Bump.sh](https://bump.sh/bump-exampl
 
 ## License
 
-The contents of this repository are licensed under [CC BY-SA
-  4.0](./LICENSE_CC-BY-SA-4.0).
+The contents of this repository are licensed under [CC BY-NC-SA
+  4.0](./LICENSE_CC-BY-NC-SA-4.0).
