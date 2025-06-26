@@ -1,20 +1,23 @@
 class WidgetsController < ApplicationController
-  before_action :set_widget, only: %i[ show update destroy ]
 
   # GET /widgets
   def index
     @widgets = Widget.all
 
-    if stale? @posts
+    if stale? @widgets
       render json: @widgets
     end
   end
 
-  # GET /widgets/1
+  # GET /widgets/:id
   def show
-    if stale? @posts
+    @widget = Widget.find(params[:id])
+
+    if stale? @widget
       render json: @widget
     end
+  rescue ActiveRecord::RecordNotFound
+    render problem: { detail: 'The requested widget does not exist.' }, status: :not_found
   end
 
   # POST /widgets
@@ -24,32 +27,36 @@ class WidgetsController < ApplicationController
     if @widget.save
       render location: @widget, status: :created
     else
-      render json: @widget.errors, status: :bad_request
+      render problem: { errors: @widget.errors }, status: :bad_request
     end
   end
 
-  # PATCH/PUT /widgets/1
+  # PUT /widgets/:id
   def update
+    @widget = Widget.find(params[:id])
+
     if @widget.update(widget_params)
       render json: @widget
     else
-      render json: @widget.errors, status: :bad_request
+      render problem: { errors: @widget.errors }, status: :bad_request
     end
+  rescue ActiveRecord::RecordNotFound
+    render problem: { detail: 'The requested widget does not exist.' }, status: :not_found
   end
 
-  # DELETE /widgets/1
+  # DELETE /widgets/:id
   def destroy
+    @widget = Widget.find(params[:id])
+
     @widget.destroy!
+  rescue ActiveRecord::RecordNotFound
+    render problem: { detail: 'The requested widget does not exist.' }, status: :not_found
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_widget
-      @widget = Widget.find(params[:id])
-    end
-
-    # Only allow a list of trusted parameters through.
-    def widget_params
-      params.permit(:name)
-    end
+  
+  # Only allow a list of trusted parameters through.
+  def widget_params
+    params.require(:widget).permit(:name)
+  end
 end

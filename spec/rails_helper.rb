@@ -50,4 +50,6 @@ RSpec.configure do |config|
   config.before(:suite) do
     OPENAPI_DOC = OpenapiContracts::Doc.parse(Rails.root.join('api'), 'openapi.yaml')
   end
+
+  config.include FactoryBot::Syntax::Methods
 end

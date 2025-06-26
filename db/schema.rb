@@ -11,10 +11,11 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[7.1].define(version: 2023_12_29_165230) do
-  create_table "widgets", force: :cascade do |t|
+  create_table "widgets", id: { type: :binary, limit: 16 }, force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["id"], name: "index_widgets_on_id", unique: true
   end
 
 end
