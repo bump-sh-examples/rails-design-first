@@ -78,7 +78,7 @@ RSpec.describe 'Widgets Requests', type: :request do
     it 'responds with 204 for existing record' do
       widget = create(:widget)
 
-      delete '/widgets/' + widget.id
+      delete "/widgets/#{widget.id}"
       expect(response).to have_http_status(:no_content)
       expect(response).to match_openapi_doc(OPENAPI_DOC)
 

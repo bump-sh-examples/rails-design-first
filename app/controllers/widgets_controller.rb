@@ -49,6 +49,7 @@ class WidgetsController < ApplicationController
     widget = Widget.find(params[:id])
 
     widget.destroy!
+    head :no_content
   rescue ActiveRecord::RecordNotFound
     render problem: { detail: 'The requested widget does not exist.' }, status: :not_found
   end
