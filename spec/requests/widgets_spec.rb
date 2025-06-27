@@ -73,4 +73,23 @@ RSpec.describe 'Widgets Requests', type: :request do
       expect(response).to match_openapi_doc(OPENAPI_DOC)
     end
   end
+
+  describe "DELETE /widgets/{id}" do
+    it 'responds with 204 for existing record' do
+      widget = create(:widget)
+
+      delete '/widgets/' + widget.id
+      expect(response).to have_http_status(:no_content)
+      expect(response).to match_openapi_doc(OPENAPI_DOC)
+
+      # Ensure the widget was deleted
+      expect(Widget.exists?(widget.id)).to be_falsey
+    end
+
+    it 'responds with 404 for non-existing record' do
+      delete '/widgets/' + SecureRandom.uuid_v7
+      expect(response).to have_http_status(:not_found)
+      expect(response).to match_openapi_doc(OPENAPI_DOC)
+    end
+  end
 end
